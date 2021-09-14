@@ -17,13 +17,14 @@ router.get('/add-product', async (req,res)=>{
     {
     console.log('data output success')
     return resu;
+    
 })
 .catch(error=>
     {
     console.log(error);
     return error
 })
-
+console.log(results[0].productPrize)
 res.render('index',{results:results})
 })
 // Post route to add product
