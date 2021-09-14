@@ -1,0 +1,31 @@
+<html><head>
+    <title>
+
+    </title>
+</head>
+<body>
+    <p>gfdgsdfgsd</p>
+    <form action="/products/add-product" method="POST">
+        <p> Enter product infor</p>
+        <input type="text" name="Productname">
+        <input type="text" name = "ProductPrize"><br>
+        <input type="Submit" name = "Submit">
+        <p>  </p>
+
+        
+    </form>
+    <form action="/products/remove" method="POST">
+        <p>Enter product ID to remove</p>
+        <input type="text" name="ID">
+        <input type="Submit" name = "Submit">
+    </form>
+    <h1> Products </h1>
+    <% if(typeof results !== 'undefined'){ %>
+    <% results.forEach(product =>{ %>
+        <h1><%= product.productTitle %></h1>
+        <p> <%= product.productPrize %> </p>
+<% }) %>
+<% } else { console.log('error getting result') } %>
+
+</body>
+    </html>
