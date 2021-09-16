@@ -11,12 +11,10 @@ const users = require('./users/user')
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 
-app.get('/', (req,res)=>{
-    res.send("This is the home page");
-})
 // Register view engnie
 
 app.set('view engine', 'ejs')
+
 app.use('/public', express.static(path.join(__dirname,'static')))
 // Routes Post Middleware
 app.use('/products', productsRoute)

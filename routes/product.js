@@ -29,6 +29,7 @@ res.render('index',{results:results})
 })
 // Post route to add product
 router.post('/add-product',(req,res)=>{
+    let message = "";
     const productpost = new product({
         productTitle: req.body.Productname,
         productPrize: req.body.ProductPrize
@@ -36,9 +37,9 @@ router.post('/add-product',(req,res)=>{
     productpost.save()
     .then(result => {
         console.log(result);
-        let message = "This product was added succesfully";
+        message = "This product was added succesfully";
         res.render('index',{message:message})
-            res.send("succesfully posted data") 
+
     })
     .catch(err => {
         console.log(err);

@@ -1,38 +1,48 @@
 const user = require('../models/user')
-
+const mongoose = require('mongoose')
+const express = require('express')
+const app = express();
+app.use(express.urlencoded({extended:true}))
+app.use(express.json())
+let message = "";
+const userspage = (req,res)=>
+{
+    res.render('user',{message:message})
+}
 // Adding a user
-const adduser = (req,res,next) =>{ 
+const adduser = async (req,res,next) =>{ 
 
-const newuser = new user({
-    Username:req.query.Username,
-    FullName:req.query.FullName,
-    Address:req.query.Address,
-    zip:req.query.zip,
-    Country:req.query.Country,
-    Password:req.query.Password
+const newuser = await new user({
+    Username:req.body.Username,
+    FullName:req.body.FullName,
+    Address:req.body.Address,
+    zip:req.body.zip,
+    Country:req.body.Country,
+    Password:req.body.Password
 })
-newuser.save()
+await newuser.save()
 .then(resu=> {
-    res.send('Added succesfully')
-
+    message="user added succesfully"
 })
 .catch(err => console.log(err))
 }
 
 // Searching based on username
-const Search = (req,res,next)=>{
-const usernameS = req.params.SearchQuery;
-console.log(req.params.SearchQuery)
-user.find({Username:usernameS})
-.then(resu => {
-    let tempobj = resu[0]
-    console.log(tempobj)
-    res.send(tempobj)
-})
-.catch(err=>
-    {
-        console.log(err)
-    })
+// Async
+
+const SearchRes = async (req,res)=>
+{
+    await user.find({Username:req.params.SearchQuery})
+     .then(data => {
+         if(data.length > 0){
+             if(data){
+                console.log(data)
+                res.send(data);
+             }
+         }
+console.log(' no results')
+     })
+     .catch(err=>console.log(err))
 }
 
 // Deleting a user based on username
@@ -52,4 +62,4 @@ const Delete = (req,res,next)=>{
     
     .catch(err => console.log(err))
 }
-module.exports = {adduser:adduser,Search:Search,Delete:Delete};
+module.exports = {adduser:adduser,SearchRes:SearchRes,Delete:Delete,userspage:userspage};
