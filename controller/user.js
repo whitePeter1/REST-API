@@ -35,22 +35,13 @@ user.find({Username:usernameS})
     })
 }
 
-// Deleting a user based on username
-const Delete = (req,res,next)=>{
-    const test =  user.find(req.params.DeleteParam)
-    .then(find => test = find)
-    console.log(test)
-    if(!test){
-        console.log('err')
-}
-else
-{
-     user.findOneAndDelete({Username:req.params.DeleteParam})
-    .then(resu =>{console.log("User deleted succesfully")
- res.send(`User ${req.params.DeleteParam} has been deleted successfully.`)   
-})
-    .catch(err => console.log(err))
-
-}
-}
-module.exports = {adduser:adduser,Search:Search,Delete:Delete};
+// // Deleting a user based on username
+// const Delete = (req,res,next)=>{
+//     user.findOneAndDelete({Username:req.params.DeleteParam})
+//     .then(resu =>{
+//         console.log("User deleted succesfully")
+//  res.send(`User ${req.params.DeleteParam} has been deleted successfully.`)   
+// })
+//     .catch(err => console.log(err))
+// }
+module.exports = {adduser:adduser,Search:Search};

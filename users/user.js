@@ -7,6 +7,6 @@ const userController = require('../controller/user')
 
 router.get('/',userController.adduser)
 router.get('/:SearchQuery',userController.Search)
-router.get('/del/:DeleteParam',userController.Delete)
+// router.get('/del/:DeleteParam',userController.Delete)
 
 module.exports = router;
