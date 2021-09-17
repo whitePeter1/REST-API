@@ -22,11 +22,12 @@ const newuser = await new user({
 })
 await newuser.save()
 .then(resu=> {
-    message="user added succesfully"
+    message = "posted succesfully"
+    res.render('../views/user',{message:message})
 })
 .catch(err => console.log(err))
 }
-
+message = ""
 // Searching based on username
 // Async
 
