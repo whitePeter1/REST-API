@@ -22,8 +22,15 @@ const newuser = await new user({
 })
 await newuser.save()
 .then(resu=> {
+
+    if(req.body.submit){
     message = "posted succesfully"
     res.render('../views/user',{message:message})
+    }
+    else
+    {
+        message="";
+    }
 })
 .catch(err => console.log(err))
 }
