@@ -12,6 +12,7 @@
     "git": "^0.1.5",
     "http": "^0.0.1-security",
     "json": "^11.0.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.5",
     "nodemon": "^2.0.12",
     "request": "^2.88.2",
