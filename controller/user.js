@@ -1,9 +1,4 @@
 const user = require('../models/user')
-const mongoose = require('mongoose')
-const express = require('express')
-const app = express();
-app.use(express.urlencoded({extended:true}))
-app.use(express.json())
 let message = "";
 const userspage = (req,res)=>
 {
@@ -23,13 +18,14 @@ const newuser = await new user({
 await newuser.save()
 .then(resu=> {
 
-    if(req.body.submit){
+    if(req.body.submit){ 
     message = "posted succesfully"
     res.render('../views/user',{message:message})
+    message = " ";
     }
     else
     {
-        message="";
+        message=" ";
     }
 })
 .catch(err => console.log(err))
