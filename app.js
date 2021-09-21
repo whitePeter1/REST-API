@@ -16,9 +16,14 @@ app.post('/login1', (req,res)=>{
 const accessToken = (req,res)=>{
     const username = req.body.Username 
     const user = {name:username}
-const accessToken  = jwt.sign(user,process.env.secretkey,)
+const accessToken  = jwt.sign(user,process.env.secretkey)
+console.log(accessToken)
     res.json({accessToken:accessToken})
+    
 }
+})
+app.get('/login1',(req,res)=>{
+    res.render('login1')
 }) // Pending Tutorial https://www.youtube.com/watch?v=mbsmsi7l3r4
 // Register view engnie
 app.set('view engine', 'ejs')
