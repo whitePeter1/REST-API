@@ -15,16 +15,7 @@ const mainRoute = require('./routes/main');
 const { send, nextTick } = require('process');
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
-app.post('/loginregister',loginController.LoginSearch,(req,res)=>
-{
-jwt.sign(user,process.env.secretkey,(err,token)=>{
-    if(err)
-    console.log(err);
-    else
-    console.log(token)
-    res.json(token)
-})
-})
+app.post('/loginregister',loginController.LoginSearch)
 app.get('/login1',(req,res)=>{
     res.render('login1')
 }) // Pending Tutorial https://www.youtube.com/watch?v=mbsmsi7l3r4
