@@ -27,7 +27,6 @@ const LoginSearch = async (req,res)=>
         else
         console.log(token)
        return res.json(token)
-        localStorage.setItem('token',user1)
     })
 }
 module.exports = {LoginSearch:LoginSearch}
