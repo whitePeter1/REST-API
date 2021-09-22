@@ -26,7 +26,10 @@ const LoginSearch = async (req,res)=>
         console.log(err);
         else
         console.log(token)
-        res.json(token)
+       return res.json(token)
+        localStorage.setItem('token',user1)
     })
 }
 module.exports = {LoginSearch:LoginSearch}
+
+// https://scotch.io/tutorials/authenticate-a-node-es6-api-with-json-web-tokens
