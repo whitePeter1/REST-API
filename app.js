@@ -15,22 +15,21 @@ const database = require('./db')
 const mainRoute = require('./routes/main')
 const logoutController = require('./controller/helpers/logout')
 const { send, nextTick } = require('process');
-const islogged = require('./controller/helpers/loggedin')
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.post('/loginregister',loginController.LoginSearch)
-app.post('/logout',logoutController.logout)
-app.get('/login1',(req,res)=>{
-    res.render('login1')
-}) // Pending Tutorial https://www.youtube.com/watch?v=mbsmsi7l3r4
-// Register view engnie
+app.get('/logout',logoutController.logout)
 app.set('view engine', 'ejs')
 // Routes Post Middleware
 app.use(cookieParser())
 app.use('/', mainRoute)
+app.use('/register',(req,res)=>{
+    res.render('register')
+})
 app.use('/products',tokenController.authenticateToken, productsRoute)
 app.use('/user', require('./routes/user'))
 app.use('/views',express.static(path.join(__dirname,"public")))
 app.listen(3000);
 
-
+// // USER ROLES 
+// https://www.youtube.com/watch?v=jI4K7L-LI58

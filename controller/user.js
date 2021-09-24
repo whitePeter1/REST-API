@@ -10,6 +10,7 @@ const adduser = async (req,res,next) =>{
 const newuser = await new user({
     Username:req.body.Username,
     FullName:req.body.FullName,
+    Email:req.body.Email,
     Address:req.body.Address,
     zip:req.body.zip,
     Country:req.body.Country,

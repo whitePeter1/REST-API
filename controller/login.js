@@ -1,7 +1,6 @@
 const user = require('../models/user')
 const jwt = require('jsonwebtoken');
 const { cookie } = require('request');
-const islogged = require('./helpers/loggedin')
 const LoginSearch = async (req,res)=>
 {
 
@@ -11,9 +10,9 @@ const LoginSearch = async (req,res)=>
          .then(data => {
              if(data.length > 0){
                  if(data){
-                     console.log(data)
-                    data = JSON.stringify(data);
-                     jwt.sign(data,process.env.secretkey,(err,token)=>{
+                    // data = JSON.stringify(data);
+                    let dat = data[0].Username
+                     jwt.sign(dat,process.env.secretkey,(err,token)=>{
                         if(err)
                         console.log(err);
                         else{
