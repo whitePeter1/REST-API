@@ -12,11 +12,13 @@ const productsRoute = require('./routes/product')
 const cors = require('cors')
 const tokenController = require('./controller/helpers/tokenauthenticate')
 const database = require('./db')
-const mainRoute = require('./routes/main');
+const mainRoute = require('./routes/main')
+const logoutController = require('./controller/helpers/logout')
 const { send, nextTick } = require('process');
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.post('/loginregister',loginController.LoginSearch)
+app.post('/logout',logoutController.logout)
 app.get('/login1',(req,res)=>{
     res.render('login1')
 }) // Pending Tutorial https://www.youtube.com/watch?v=mbsmsi7l3r4

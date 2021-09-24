@@ -3,6 +3,9 @@ const jwt = require('jsonwebtoken');
 const { cookie } = require('request');
 const LoginSearch = async (req,res)=>
 {
+    if(process.env.loggedin === true){
+        return res.redirect("products")
+    }
     const username = req.body.Username;
     const password = req.body.Password;
     await user.find({Username:username,Password:password})
@@ -16,6 +19,8 @@ const LoginSearch = async (req,res)=>
                     console.log(err);
                     else{
                         res.cookie('token',token)
+                        process.env.loggedin == true;
+                        console.log(process.env.loggedin)
                         res.redirect("products")
                     }
                     
