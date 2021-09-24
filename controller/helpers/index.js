@@ -10,5 +10,4 @@ return resu;
 console.log(error);
 return error
 })
-
 module.exports = {allproducts:allproducts};
