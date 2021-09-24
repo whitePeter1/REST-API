@@ -15,6 +15,7 @@ const database = require('./db')
 const mainRoute = require('./routes/main')
 const logoutController = require('./controller/helpers/logout')
 const { send, nextTick } = require('process');
+const islogged = require('./controller/helpers/loggedin')
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.post('/loginregister',loginController.LoginSearch)

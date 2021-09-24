@@ -3,6 +3,12 @@ const router = express();
 const mainController = require('../controller/mainController')
 router.get('/',mainController.allproducts)
 router.get('/loginregister',(req,res)=>{
-    res.render('loginregister')
+    if(process.env.loggedin === "false"){
+        res.render('loginregister')
+    }
+    else{
+        res.redirect('/products')
+    }
+    
 })
 module.exports = router;

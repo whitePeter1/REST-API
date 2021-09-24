@@ -10,6 +10,7 @@ res.render('product',{results:results})
 
 // Main Route
 const mainroute = async (req,res)=>{
+    
     res.json({message:'main route'})
 }
 
