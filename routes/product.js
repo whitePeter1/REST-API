@@ -7,9 +7,10 @@ require('dotenv/config')
 //ROUTES add product get
 router.get('/', productController.mainroute);
 router.get('/all-products', productController.allproducts)
+router.get('/all-products/json', productController.allproducts)
 // Post route to add product
 router.post('/add-product',productController.addProduct)
 // Remove a product based on ID
 router.post('/remove', productController.removeProduct)
-
+router.get('/delet/:ProductName', productController.delet)
 module.exports = router;

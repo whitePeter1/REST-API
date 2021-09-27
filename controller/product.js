@@ -51,6 +51,17 @@ const removeProduct = async (req,res)=> {
         })
     }
 }
-
+const delet = async (req,res)=>
+{
+await product.deleteOne({productTitle:req.params.ProductName})
+        .then(data =>{
+            console.log(data)
+            console.log("Deleted Succesfully")
+        })
+        .catch(err=> {
+            console.log(err)
+        })
+}
+       
 // Exporting Modules
-module.exports = {allproducts:allproducts,mainroute:mainroute,addProduct:addProduct,removeProduct:removeProduct}
+module.exports = {delet:delet,allproducts:allproducts,mainroute:mainroute,addProduct:addProduct,removeProduct:removeProduct}
