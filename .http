@@ -1,6 +1,6 @@
-post localhost:3000/login1
+post localhost:3001
 Content-Type: application/json
 
 {
-    "username":"Kyle"
+    "userID":"1"
 }

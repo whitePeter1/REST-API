@@ -10,7 +10,7 @@ const loginController = require('./controller/login')
 const cookieParser = require('cookie-parser')
 const productsRoute = require('./routes/product')
 const cors = require('cors')
-const tokenController = require('./controller/helpers/tokenauthenticate')
+const {authenticateToken} = require('./controller/helpers/tokenauthenticate')
 const database = require('./db')
 const mainRoute = require('./routes/main')
 const logoutController = require('./controller/helpers/logout')
@@ -26,10 +26,11 @@ app.use('/', mainRoute)
 app.use('/register',(req,res)=>{
     res.render('register')
 })
-app.use('/products',tokenController.authenticateToken, productsRoute)
+app.use('/products',authenticateToken, productsRoute)
 app.use('/user', require('./routes/user'))
 app.use('/views',express.static(path.join(__dirname,"public")))
 app.listen(3000);
+//----------------------------------------------------------------------------------------------//
 
 // // USER ROLES 
 // https://www.youtube.com/watch?v=jI4K7L-LI58

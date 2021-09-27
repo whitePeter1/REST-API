@@ -1,4 +1,6 @@
+const product = require('../../models/product')
 const jwt = require('jsonwebtoken')
+
 const authenticateToken = async (req,res,next)=>
 {
   let token = req.cookies.token

@@ -14,7 +14,8 @@ const newuser = await new user({
     Address:req.body.Address,
     zip:req.body.zip,
     Country:req.body.Country,
-    Password:req.body.Password
+    Password:req.body.Password,
+    role:"user"
 })
 await newuser.save()
 .then(resu=> {

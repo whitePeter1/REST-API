@@ -11,7 +11,7 @@ const LoginSearch = async (req,res)=>
              if(data.length > 0){
                  if(data){
                     // data = JSON.stringify(data);
-                    let dat = data[0].Username
+                    let dat = data[0].Username && data[0].role
                      jwt.sign(dat,process.env.secretkey,(err,token)=>{
                         if(err)
                         console.log(err);

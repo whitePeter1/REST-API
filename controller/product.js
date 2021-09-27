@@ -7,7 +7,6 @@ const allproducts = async (req,res) =>
 const results = await helperProd.allproducts
 res.render('product',{results:results})
 }
-
 // Main Route
 const mainroute = async (req,res)=>{
     
@@ -58,7 +57,7 @@ await product.deleteOne({productTitle:req.params.ProductName})
         .then(data =>{
             console.log(data)
             console.log("Deleted Succesfully")
-            res.send(allproducts())
+            res.send(helperProd.allproducts)
         })
         .catch(err=> {
             console.log(err)
@@ -66,4 +65,4 @@ await product.deleteOne({productTitle:req.params.ProductName})
 }
        
 // Exporting Modules
-module.exports = {delet:delet,allproducts:allproducts,mainroute:mainroute,addProduct:addProduct,removeProduct:removeProduct}
+module.exports = {delet,allproducts,mainroute,addProduct,removeProduct}
