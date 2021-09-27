@@ -44,6 +44,7 @@ const removeProduct = async (req,res)=> {
         .then(result => {
             console.log(result)
             res.send("Removed Succesfully");
+            
         })
         .catch(errr => {
             console.log(errr)
@@ -57,6 +58,7 @@ await product.deleteOne({productTitle:req.params.ProductName})
         .then(data =>{
             console.log(data)
             console.log("Deleted Succesfully")
+            res.send(allproducts())
         })
         .catch(err=> {
             console.log(err)

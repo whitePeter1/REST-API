@@ -22,7 +22,7 @@ Products
 
     <h1> All Products </h1>
     <% if(typeof results !== 'undefined'){ %>
-    <% results.forEach(product =>{ %><a href = "/products/delet/<%= product.productTitle%>">Del</a>------<a href="/edit">Edit</a>
+    <% results.forEach(product =>{ %><a onclick="window.location.reload(true);" href = "/products/delet/<%= product.productTitle%>">Del</a>------<a href="/edit">Edit</a>
         <h1><%= product.productTitle %> </h1>
         <p> <%= product.productPrize %> </p>
 <% }) %>
