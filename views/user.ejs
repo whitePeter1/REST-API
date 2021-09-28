@@ -1,4 +1,14 @@
 <html>
+    <script>
+        function message()
+        {
+        setTimeout(function()
+        {
+            document.getElementById("message").style.display ="none";
+            }, 3000);
+        }
+        message();
+        </script>
     <form action="/user/" method="POST">
         <label for="Username">   Username     </label>
             <input type="text" name = "Username"><br>
@@ -13,8 +23,43 @@
     <input type="text" name = "Country"><br>
     <label for="Password">   Password     </label>
     <input type="text" name = "Password"><br>
-    <input type="submit" name="submit"> 
-    
+    <label for="Email">  Email    </label>
+    <input type="text" name = "Email"><br>
+    <input type="submit" name="submit">
     </form>
-    <p> <%= message %></p>
+    <p style="color:red"><span id="message"> <%= message %></span></p>
 </html>
+<h3> Search For User </h3>
+<form action="/user/search" method="POST">
+<input type="text" name = "Search"> 
+<input type="Submit" name = "Submit">
+<style>
+    table, th, td {
+  border: 1px solid black;
+}
+</style>
+<table width = "100%">
+    <tr>
+      <th>ID</th>
+      <th>Username</th>
+      <th>FullName</th>
+      <th>Address</th>
+      <th>Zip</th>
+      <th>Country</th>
+      <th>Password</th>
+      <th>Role</th>
+
+    </tr>
+    <tr>
+      <td><%= resul._id %></td>
+      <td><%= resul.Username %></td>
+      <td><%= resul.FullName %></td>
+      <td><%= resul.Address %></td>
+      <td><%= resul.zip %></td>
+      <td><%= resul.Country %></td>
+      <td><%= resul.Password %></td>
+      <td><%= resul.role %></td>
+      <%= resul = " " %> 
+    </tr>
+  </table>
+</form>

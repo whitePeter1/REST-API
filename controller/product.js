@@ -17,6 +17,8 @@ const mainroute = async (req,res)=>{
 const addProduct = async (req,res)=>{
     {
         let message = "";
+if(!await product.findOne({"productTitle":req.body.Productname}))
+{
         const productpost = await new product({
             productTitle: req.body.Productname,
             productPrize: req.body.ProductPrize
@@ -24,7 +26,7 @@ const addProduct = async (req,res)=>{
         await productpost.save()
         .then(result => {
             console.log(result);
-            message = "This product was added succesfully";
+            
         })
         .catch(err => {
             console.log(err);
@@ -32,6 +34,13 @@ const addProduct = async (req,res)=>{
             console.log(req.body.Productname,req.body.ProductPrize)
     
         })
+        message = "This product was added succesfully";
+        res.json({message:"Product added succesfully"})
+    }
+    else
+    {
+        res.json({message:"Product exists"})
+    }
     
     }
 }
@@ -51,6 +60,8 @@ const removeProduct = async (req,res)=> {
         })
     }
 }
+
+// delete product based on productTitle
 const delet = async (req,res)=>
 {
 await product.deleteOne({productTitle:req.params.ProductName})
@@ -62,6 +73,8 @@ await product.deleteOne({productTitle:req.params.ProductName})
         .catch(err=> {
             console.log(err)
         })
+        const results = await helperProd.allproducts
+        res.render('product',{results:results})
 }
        
 // Exporting Modules

@@ -1,16 +1,20 @@
+
 const user = require('../models/user')
-let message = "";
+let message = " ";
+let resul =" ";
 const userspage = (req,res)=>
 {
-    res.render('user',{message:message})
+    res.render('user',{message:message,resul:resul})
 }
 // Adding a user
 const adduser = async (req,res,next) =>{ 
-
+const checkmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+if(!await user.findOne({"Username":req.body.Username}) && checkmail.test(req.body.Email) && req.body.Password.length > 10)
+{
 const newuser = await new user({
     Username:req.body.Username,
     FullName:req.body.FullName,
-    Email:req.body.Email,
+    email:req.body.Email,
     Address:req.body.Address,
     zip:req.body.zip,
     Country:req.body.Country,
@@ -22,7 +26,7 @@ await newuser.save()
 
     if(req.body.submit){ 
     message = "posted succesfully"
-    res.render('../views/user',{message:message})
+    res.render('../views/user',{message:message,resul:resul})
     message = " ";
     }
     else
@@ -32,23 +36,40 @@ await newuser.save()
 })
 .catch(err => console.log(err))
 }
+else
+{
+    if(req.body.submit){ 
+        message = "User already exists or information not supplied correctly"
+        res.render('../views/user',{message:message,resul:resul})
+        message = " ";
+    }
+}
 message = ""
+}
 // Searching based on username
 // Async
 
 const SearchRes = async (req,res)=>
 {
-    await user.find({Username:req.params.SearchQuery})
+    resul = " "
+    console.log(req.body.Search)
+    await user.findOne({"Username":req.body.Search})
      .then(data => {
-         if(data.length > 0){
-             if(data){
-                console.log(data)
-                res.send(data);
-             }
-         }
-console.log(' no results')
+         if(data){
+         console.log(data)
+         resul = data
+         res.render('../views/user',{resul:resul,message:message})
+        }
+        else
+        {
+            resul = " No results "
+            res.render('../views/user',{resul:resul,message:message})
+            resul = "  "
+        }
      })
      .catch(err=>console.log(err))
+     
+
 }
 
 // Deleting a user based on username
@@ -68,4 +89,5 @@ const Delete = (req,res,next)=>{
     
     .catch(err => console.log(err))
 }
+
 module.exports = {adduser:adduser,SearchRes:SearchRes,Delete:Delete,userspage:userspage};
