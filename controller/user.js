@@ -1,7 +1,9 @@
 
 const user = require('../models/user')
-let message = " ";
-let resul =" ";
+const {allusers} = require('././helpers/index')
+let message = " "
+let resul = allusers
+console.log(resul)
 const userspage = (req,res)=>
 {
     res.render('user',{message:message,resul:resul})

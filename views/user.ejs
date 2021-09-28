@@ -38,6 +38,8 @@
   border: 1px solid black;
 }
 </style>
+<% if(typeof resul !== 'undefined'){ %>
+    <% resul.forEach(user =>{ %>
 <table width = "100%">
     <tr>
       <th>ID</th>
@@ -51,15 +53,17 @@
 
     </tr>
     <tr>
-      <td><%= resul._id %></td>
-      <td><%= resul.Username %></td>
-      <td><%= resul.FullName %></td>
-      <td><%= resul.Address %></td>
-      <td><%= resul.zip %></td>
-      <td><%= resul.Country %></td>
-      <td><%= resul.Password %></td>
-      <td><%= resul.role %></td>
+      <td><%= user._id %></td>
+      <td><%= user.Username %></td>
+      <td><%= user.FullName %></td>
+      <td><%= user.Address %></td>
+      <td><%= user.zip %></td>
+      <td><%= user.Country %></td>
+      <td><%= user.Password %></td>
+      <td><%= user.role %></td>
+      <% }) %> <% } else { console.log('error getting result')} %>
       <%= resul = " " %> 
+      
     </tr>
   </table>
 </form>
