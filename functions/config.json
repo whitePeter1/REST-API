@@ -1,1 +1,9 @@
-[]
+[
+    {
+        "name": "Authenticate",
+        "private": false,
+        "can_evaluate": {
+            "dghdghdghdghdghdghdghdghdghdghdghdghdghdgh": "gfdhsdfghsdfgh"
+        }
+    }
+]
