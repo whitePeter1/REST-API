@@ -35,5 +35,7 @@ app.use('/views',express.static(path.join(__dirname,"public")))
 app.listen(3000);
 //----------------------------------------------------------------------------------------------//
 
-// // USER ROLES 
-// https://www.youtube.com/watch?v=jI4K7L-LI58
+// // Tutorial on microservices 
+// https://medium.com/swlh/the-complete-microservice-tutorial-part-1-building-user-service-with-grpc-node-js-and-mongodb-73e70ed80148 
+
+
