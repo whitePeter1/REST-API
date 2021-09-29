@@ -6,7 +6,8 @@ const apiToken = require('../models/apiAuth')
 const {authenticateapi} = require('../controller/helpers/apiauthenticate')
 const {generateToken} = require('../controller/generateToken')
 router.get('/protected',authenticateapi,(req,res)=>{
-    const test = " fsdgf"
+    const test = req.query.api2
+console.log(test)
 res.json({message:"PROTECTED PATH"})
 })
 // router.get('/protected',(req,res)=>{

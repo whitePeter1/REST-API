@@ -1,19 +1,15 @@
 const jwt = require('jsonwebtoken')
 const apiToken = require('../models/apiAuth')
-const generateToken = (req,res)=>{
+const Str = require('@supercharge/strings')
+const generateToken = async (req,res)=>{
 console.log("being executed")
-jwt.sign("TestUser","TestKey", async (err,token)=>{
-    if(err)
-    {console.log(err)}
-    else{
+const token = Str.random(30);
 const newapi = new apiToken({
 token:token
 })
 await newapi.save()
 .then(succ=>{console.log(succ)})
 .catch(err=>{console.log(err)})
-    }
-})
 res.render('apiauth')
 }
 module.exports = {generateToken}
