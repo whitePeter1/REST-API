@@ -2,10 +2,16 @@
 const user = require('../models/user')
 const {allusers} = require('././helpers/index')
 let message = " "
-let resul = allusers
-console.log(resul)
-const userspage = (req,res)=>
+let resul = " "
+const userspage = async (req,res)=>
 {
+    await user.find()
+  .then(data=>{
+      resul = data;
+  })
+  .catch(err =>{
+      return err
+  })
     res.render('user',{message:message,resul:resul})
 }
 // Adding a user
@@ -55,7 +61,8 @@ const SearchRes = async (req,res)=>
 {
     resul = " "
     console.log(req.body.Search)
-    await user.findOne({"Username":req.body.Search})
+    if(req.body.Search !== " "){
+        await user.findOne({"Username":req.body.Search})
      .then(data => {
          if(data){
          console.log(data)
@@ -70,8 +77,15 @@ const SearchRes = async (req,res)=>
         }
      })
      .catch(err=>console.log(err))
-     
+    }
+    
+    else{
+    
+        resul = " No results "
+        res.render('../views/user',{resul:resul,message:message})
+        resul = "  "
 
+}
 }
 
 // Deleting a user based on username
