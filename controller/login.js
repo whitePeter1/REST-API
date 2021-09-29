@@ -10,7 +10,7 @@ const LoginSearch = async (req,res)=>
          .then(data => {
              if(data.length > 0){
                  if(data){
-                    let dat = data[0].Username && data[0].role
+                    let dat = data[0].Username
                      jwt.sign(dat,process.env.secretkey,(err,token)=>{
                         if(err)
                         console.log(err);

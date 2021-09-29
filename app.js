@@ -12,6 +12,7 @@ const productsRoute = require('./routes/product')
 const cors = require('cors')
 const {authenticateToken} = require('./controller/helpers/tokenauthenticate')
 const database = require('./db')
+const apiRoute = require('./routes/apiauth')
 const mainRoute = require('./routes/main')
 const logoutController = require('./controller/helpers/logout')
 const { send, nextTick } = require('process');
@@ -23,6 +24,8 @@ app.set('view engine', 'ejs')
 // Routes Post Middleware
 app.use(cookieParser())
 app.use('/', mainRoute)
+
+app.use('/apiauth', apiRoute)
 app.use('/register',(req,res)=>{
     res.render('register')
 })
