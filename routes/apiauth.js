@@ -20,7 +20,7 @@ router.get('/api123',(req,res)=>{
 router.get('/protected',authenticateapi,(req,res)=>{
     const test = req.query.api2
 console.log(test)
-res.json({message:"PROTECTED PATH"})
+res.json({message:"PROTECTED PATH Access Successfully"})
 })
 // router.get('/protected',(req,res)=>{
 //     res.send("test")
