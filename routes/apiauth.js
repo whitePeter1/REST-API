@@ -28,5 +28,5 @@ res.json({message:"PROTECTED PATH Access Successfully"})
 router.get('/',(req,res)=>{
 res.render('apiauth')
 })
-router.post('/token',generateToken)
+router.post('/',generateToken)
 module.exports = router

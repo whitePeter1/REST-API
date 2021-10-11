@@ -9,6 +9,6 @@ token:token
 await newapi.save()
 .then(succ=>{console.log(succ)})
 .catch(err=>{console.log(err)})
-res.render('apiauth',{token})
+res.render('apiauth',{token:token})
 }
 module.exports = {generateToken}

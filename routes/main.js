@@ -7,7 +7,7 @@ router.get('/loginregister',(req,res)=>{
         res.render('loginregister')
     }
     else{
-        res.redirect('/products')
+        res.redirect(req.url)
     }
     
 })

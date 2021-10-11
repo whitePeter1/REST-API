@@ -17,6 +17,7 @@ const mainRoute = require('./routes/main')
 const logoutController = require('./controller/helpers/logout')
 const {authenticateapi} = require('./controller/helpers/apiauthenticate')
 const { send, nextTick } = require('process');
+const {tokenauthenticate} = require('./controller/helpers/tokenauthenticate');
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.post('/loginregister',loginController.LoginSearch)
@@ -30,8 +31,8 @@ app.use('/apiauth', apiRoute)
 app.use('/register',(req,res)=>{
     res.render('register')
 })
-app.use('/products',authenticateToken,authenticateapi, productsRoute)
-app.use('/user', require('./routes/user'))
+app.use('/products',authenticateapi, productsRoute) /// Api key based authentication 
+app.use('/user',authenticateToken, require('./routes/user')) // Login based authentication
 app.use('/views',express.static(path.join(__dirname,"public")))
 app.listen(process.env.PORT || 8888 );
 //----------------------------------------------------------------------------------------------//
