@@ -32,7 +32,7 @@ app.use('/register',(req,res)=>{
     res.render('register')
 })
 app.use('/products',authenticateapi, productsRoute) /// Api key based authentication 
-app.use('/user',authenticateToken, require('./routes/user')) // Login based authentication
+app.use('/user', require('./routes/user')) // Login based authentication
 app.use('/views',express.static(path.join(__dirname,"public")))
 app.listen(process.env.PORT || 8888 );
 //----------------------------------------------------------------------------------------------//
