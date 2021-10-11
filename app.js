@@ -31,6 +31,14 @@ app.use('/apiauth', apiRoute)
 app.use('/register',(req,res)=>{
     res.render('register')
 })
+var allowCrossDomain = function(req,res,next){
+    res.header('Access-Control-Allow-Origin', 'nodejsapi443.herokuapp.com');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+    next();
+}
+app.use(allowCrossDomain)
 app.use('/products',authenticateapi, productsRoute) /// Api key based authentication 
 app.use('/user', require('./routes/user')) // Login based authentication
 app.use('/views',express.static(path.join(__dirname,"public")))
