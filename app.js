@@ -15,6 +15,7 @@ const database = require('./db')
 const apiRoute = require('./routes/apiauth')
 const mainRoute = require('./routes/main')
 const logoutController = require('./controller/helpers/logout')
+const {authenticateapi} = require('./controller/helpers/apiauthenticate')
 const { send, nextTick } = require('process');
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
@@ -29,7 +30,7 @@ app.use('/apiauth', apiRoute)
 app.use('/register',(req,res)=>{
     res.render('register')
 })
-app.use('/products',authenticateToken, productsRoute)
+app.use('/products',authenticateToken,authenticateapi, productsRoute)
 app.use('/user', require('./routes/user'))
 app.use('/views',express.static(path.join(__dirname,"public")))
 app.listen(process.env.PORT || 8888 );
