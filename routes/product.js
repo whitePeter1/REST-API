@@ -9,6 +9,9 @@ require('dotenv/config')
 router.get('/', mainroute);
 router.get('/all-products', allproducts)
 router.get('/all-products/json', (req,res)=>{
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
     product.find()
     .then(data=>{
         res.send(data)
