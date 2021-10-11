@@ -1,7 +1,7 @@
-const productHelper = require('./helpers/index')
+const {allproducts1} = require('./helpers/index')
 const allproducts = async (req,res)=>
 {
-    const producRes = await productHelper.allproducts
+    const producRes = await allproducts1
     res.render('index',{producRes})
 }
 const loginregister = (req,res)=>{

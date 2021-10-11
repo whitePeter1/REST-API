@@ -1,6 +1,7 @@
 const product = require('../../models/product')
 const user = require('../../models/user')
-const allproducts = product.find()
+const allproducts1 =
+product.find()
 .then(resu =>
 {
 return resu;
@@ -9,7 +10,7 @@ return resu;
 .catch(error=>
 {
 console.log(error);
-return error
+return error;
 })
 const allusers = async(req,res)=>{
 await user.find()
@@ -20,4 +21,4 @@ await user.find()
       return err
   })
 }
-module.exports = {allproducts,allusers};
+module.exports = {allproducts1,allusers};

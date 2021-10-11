@@ -1,10 +1,11 @@
 const product = require('../models/product')
-const helperProd = require('./helpers/index')
+const {allproducts1} = require('./helpers/index')
 
 // Showing all products
 const allproducts = async (req,res) =>
 {
-const results = await helperProd.allproducts
+const results = await allproducts1
+console.log(results)
 res.render('product',{results:results})
 }
 // Main Route
