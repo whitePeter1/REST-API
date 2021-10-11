@@ -1,4 +1,3 @@
-const jwt = require('jsonwebtoken')
 const apiToken = require('../models/apiAuth')
 const Str = require('@supercharge/strings')
 const generateToken = async (req,res)=>{
@@ -10,6 +9,6 @@ token:token
 await newapi.save()
 .then(succ=>{console.log(succ)})
 .catch(err=>{console.log(err)})
-res.render('apiauth')
+res.render('apiauth',{token})
 }
 module.exports = {generateToken}
