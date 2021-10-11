@@ -42,7 +42,7 @@ exports.allUsersDelete = async (req, res, next) => {
                 Password:req.body.Password,
                 role:req.body.role
 
-            }})
+            }},{new:true})
                 .then(resul => {
                     res.status(200).send("Changed Succesfully"+ resul)
                 })
