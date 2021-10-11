@@ -22,7 +22,7 @@ exports.allproductsdelete = async (req,res)=>{
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
-    const todel = req.query
+    const todel = req.body
     console.log(todel)
     await product.deleteOne(todel)
     .then(data=>{
@@ -41,7 +41,8 @@ exports.allproductsdelete = async (req,res)=>{
         res.header('Access-Control-Allow-Origin', '*');
         res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
         res.header('Access-Control-Allow-Headers', 'Content-Type');
-        const todel = req.query
+        const todel = req.body
+        console.log(todel)
         console.log(todel)
         const add = new product(todel)
         add.save()
