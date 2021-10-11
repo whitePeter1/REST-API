@@ -32,7 +32,7 @@ app.use('/register',(req,res)=>{
 app.use('/products',authenticateToken, productsRoute)
 app.use('/user', require('./routes/user'))
 app.use('/views',express.static(path.join(__dirname,"public")))
-app.listen(3000);
+app.listen(8888);
 //----------------------------------------------------------------------------------------------//
 
 // // Tutorial on microservices 
