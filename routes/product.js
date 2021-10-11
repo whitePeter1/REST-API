@@ -4,23 +4,15 @@ const path = require('path')
 const {allproducts1} = require('../controller/helpers/index')
 const {mainroute,allproducts,addProduct,removeProduct,delet} = require('../controller/product')
 const product = require('../models/product')
+const {allproducts123,allproductsdelete,allproductspost, allproductsupdate} = require('../controller/allproductsjson')
 require('dotenv/config')
 //ROUTES add product get
 router.get('/', mainroute);
 router.get('/all-products', allproducts)
-router.get('/all-products/json', (req,res)=>{
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    product.find()
-    .then(data=>{
-        res.send(data)
-    })
-    .catch(err=>
-        {
-        console.log(err)
-    })
-})
+router.get('/all-products/json', allproducts123)
+router.delete('/all-products/json', allproductsdelete)
+router.post('/all-products/json',allproductspost)
+router.put('/all-products/json',allproductsupdate)
 // Post route to add product
 router.post('/add-product',addProduct)
 // Remove a product based on ID
