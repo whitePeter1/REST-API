@@ -61,9 +61,8 @@ exports.allproductsdelete = async (req,res)=>{
             const id = req.query.id
             const productTitle = req.body.productTitle;
             const productPrize = req.body.productPrize;
-            product.findByIdAndUpdate(id,{productTitle:productTitle},{productPrize:productPrize},(err,data)=>{
+            product.findOneAndUpdate({_id:id},{$set:{productTitle:productTitle,productPrize:productPrize}},{new:true},(err,data)=>{
                 if(err) {res.status(400).send(err)}
                 res.status(200).send("updated user:" + data)
             })
-
             }
