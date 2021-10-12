@@ -21,7 +21,8 @@
     "node-fetch": "^3.0.0",
     "nodemon": "^2.0.12",
     "request": "^2.88.2",
-    "request-promise-native": "^1.0.9"
+    "request-promise-native": "^1.0.9",
+    "typescript": "^4.4.3"
   },
   "devDependencies": {},
   "scripts": {
