@@ -37,6 +37,9 @@ app.all('/'), function(req,res,next){
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     next();
 }
+app.get('*',(req,res)=>{
+    res.status(404).json("Route Does not exist")
+})
 app.use('/products',authenticateapi, productsRoute) /// Api key based authentication 
 app.use('/user', require('./routes/user')) // Login based authentication
 app.use('/views',express.static(path.join(__dirname,"public")))

@@ -40,6 +40,9 @@ type:String,
 required:true
 }
 })
+modeli.statics.verifyLogin = (user,pass)=>{
+
+}
     const user = mongoose.model('user',modeli);
 
 module.exports = user;
